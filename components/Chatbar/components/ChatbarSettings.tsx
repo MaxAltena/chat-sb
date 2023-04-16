@@ -1,4 +1,4 @@
-import { IconFileExport, IconMoon, IconSun } from '@tabler/icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useContext } from 'react';
 
 import { useTranslation } from 'next-i18next';
@@ -11,6 +11,8 @@ import { SidebarButton } from '../../Sidebar/SidebarButton';
 import ChatbarContext from '../Chatbar.context';
 import { ClearConversations } from './ClearConversations';
 import { PluginKeys } from './PluginKeys';
+
+import { faFileExport, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 export const ChatbarSettings = () => {
   const { t } = useTranslation('sidebar');
@@ -44,15 +46,13 @@ export const ChatbarSettings = () => {
 
       <SidebarButton
         text={t('Export data')}
-        icon={<IconFileExport size={18} />}
+        icon={<FontAwesomeIcon icon={faFileExport} />}
         onClick={() => handleExportData()}
       />
 
       <SidebarButton
         text={lightMode === 'light' ? t('Dark mode') : t('Light mode')}
-        icon={
-          lightMode === 'light' ? <IconMoon size={18} /> : <IconSun size={18} />
-        }
+        icon={<FontAwesomeIcon icon={lightMode === 'light' ? faMoon : faSun} />}
         onClick={() =>
           homeDispatch({
             field: 'lightMode',

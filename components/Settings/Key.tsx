@@ -1,9 +1,11 @@
-import { IconCheck, IconKey, IconX } from '@tabler/icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FC, KeyboardEvent, useEffect, useRef, useState } from 'react';
 
 import { useTranslation } from 'next-i18next';
 
 import { SidebarButton } from '../Sidebar/SidebarButton';
+
+import { faCheck, faKey, faX } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   apiKey: string;
@@ -36,7 +38,7 @@ export const Key: FC<Props> = ({ apiKey, onApiKeyChange }) => {
 
   return isChanging ? (
     <div className="duration:200 flex w-full cursor-pointer items-center rounded-md py-3 px-3 transition-colors hover:bg-gray-500/10">
-      <IconKey size={18} />
+      <FontAwesomeIcon icon={faKey} />
 
       <input
         ref={inputRef}
@@ -49,18 +51,18 @@ export const Key: FC<Props> = ({ apiKey, onApiKeyChange }) => {
       />
 
       <div className="flex w-[40px]">
-        <IconCheck
+        <FontAwesomeIcon
+          icon={faCheck}
           className="ml-auto min-w-[20px] text-neutral-400 hover:text-neutral-100"
-          size={18}
           onClick={(e) => {
             e.stopPropagation();
             handleUpdateKey(newKey);
           }}
         />
 
-        <IconX
+        <FontAwesomeIcon
+          icon={faX}
           className="ml-auto min-w-[20px] text-neutral-400 hover:text-neutral-100"
-          size={18}
           onClick={(e) => {
             e.stopPropagation();
             setIsChanging(false);
@@ -72,7 +74,7 @@ export const Key: FC<Props> = ({ apiKey, onApiKeyChange }) => {
   ) : (
     <SidebarButton
       text={t('OpenAI API Key')}
-      icon={<IconKey size={18} />}
+      icon={<FontAwesomeIcon icon={faKey} />}
       onClick={() => setIsChanging(true)}
     />
   );

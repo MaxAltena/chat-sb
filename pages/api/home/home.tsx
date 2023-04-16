@@ -68,7 +68,7 @@ const Home = ({
       conversations,
       selectedConversation,
       prompts,
-      temperature
+      temperature,
     },
     dispatch,
   } = contextValue;
@@ -230,7 +230,7 @@ const Home = ({
     if (window.innerWidth < 640) {
       dispatch({ field: 'showChatbar', value: false });
     }
-  }, [selectedConversation]);
+  }, [selectedConversation, dispatch]);
 
   useEffect(() => {
     defaultModelId &&
@@ -245,7 +245,12 @@ const Home = ({
         field: 'serverSidePluginKeysSet',
         value: serverSidePluginKeysSet,
       });
-  }, [defaultModelId, serverSideApiKeyIsSet, serverSidePluginKeysSet]);
+  }, [
+    defaultModelId,
+    serverSideApiKeyIsSet,
+    serverSidePluginKeysSet,
+    dispatch,
+  ]);
 
   // ON LOAD --------------------------------------------
 

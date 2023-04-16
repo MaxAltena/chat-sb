@@ -1,17 +1,14 @@
-import { IconCircleX } from '@tabler/icons-react';
-import { FC } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { ErrorMessage } from '@/types/error';
 
-interface Props {
-  error: ErrorMessage;
-}
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
-export const ErrorMessageDiv: FC<Props> = ({ error }) => {
+export function ErrorMessageDiv({ error }: { error: ErrorMessage }) {
   return (
     <div className="mx-6 flex h-full flex-col items-center justify-center text-red-500">
       <div className="mb-5">
-        <IconCircleX size={36} />
+        <FontAwesomeIcon icon={faCircleXmark} />
       </div>
       <div className="mb-3 text-2xl font-medium">{error.title}</div>
       {error.messageLines.map((line, index) => (
@@ -25,4 +22,4 @@ export const ErrorMessageDiv: FC<Props> = ({ error }) => {
       </div>
     </div>
   );
-};
+}

@@ -1,11 +1,4 @@
-import {
-  IconCaretDown,
-  IconCaretRight,
-  IconCheck,
-  IconPencil,
-  IconTrash,
-  IconX,
-} from '@tabler/icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   KeyboardEvent,
   ReactElement,
@@ -20,19 +13,26 @@ import HomeContext from '@/pages/api/home/home.context';
 
 import SidebarActionButton from '@/components/Buttons/SidebarActionButton';
 
-interface Props {
-  currentFolder: FolderInterface;
-  searchTerm: string;
-  handleDrop: (e: any, folder: FolderInterface) => void;
-  folderComponent: (ReactElement | undefined)[];
-}
+import {
+  faCaretDown,
+  faCaretRight,
+  faCheck,
+  faPencil,
+  faTrash,
+  faX,
+} from '@fortawesome/free-solid-svg-icons';
 
-const Folder = ({
+export function Folder({
   currentFolder,
   searchTerm,
   handleDrop,
   folderComponent,
-}: Props) => {
+}: {
+  currentFolder: FolderInterface;
+  searchTerm: string;
+  handleDrop: (e: any, folder: FolderInterface) => void;
+  folderComponent: (ReactElement | undefined)[];
+}) {
   const { handleDeleteFolder, handleUpdateFolder } = useContext(HomeContext);
 
   const [isDeleting, setIsDeleting] = useState(false);
@@ -96,11 +96,7 @@ const Folder = ({
       <div className="relative flex items-center">
         {isRenaming ? (
           <div className="flex w-full items-center gap-3 bg-[#343541]/90 p-3">
-            {isOpen ? (
-              <IconCaretDown size={18} />
-            ) : (
-              <IconCaretRight size={18} />
-            )}
+            <FontAwesomeIcon icon={isOpen ? faCaretDown : faCaretRight} />
             <input
               className="mr-12 flex-1 overflow-hidden overflow-ellipsis border-neutral-400 bg-transparent text-left text-[12.5px] leading-3 text-white outline-none focus:border-neutral-100"
               type="text"
@@ -119,12 +115,7 @@ const Folder = ({
             onDragEnter={highlightDrop}
             onDragLeave={removeHighlight}
           >
-            {isOpen ? (
-              <IconCaretDown size={18} />
-            ) : (
-              <IconCaretRight size={18} />
-            )}
-
+            <FontAwesomeIcon icon={isOpen ? faCaretDown : faCaretRight} />
             <div className="relative max-h-5 flex-1 overflow-hidden text-ellipsis whitespace-nowrap break-all text-left text-[12.5px] leading-3">
               {currentFolder.name}
             </div>
@@ -147,7 +138,7 @@ const Folder = ({
                 setIsRenaming(false);
               }}
             >
-              <IconCheck size={18} />
+              <FontAwesomeIcon icon={faCheck} />
             </SidebarActionButton>
             <SidebarActionButton
               handleClick={(e) => {
@@ -156,7 +147,7 @@ const Folder = ({
                 setIsRenaming(false);
               }}
             >
-              <IconX size={18} />
+              <FontAwesomeIcon icon={faX} />
             </SidebarActionButton>
           </div>
         )}
@@ -170,7 +161,7 @@ const Folder = ({
                 setRenameValue(currentFolder.name);
               }}
             >
-              <IconPencil size={18} />
+              <FontAwesomeIcon icon={faPencil} />
             </SidebarActionButton>
             <SidebarActionButton
               handleClick={(e) => {
@@ -178,7 +169,7 @@ const Folder = ({
                 setIsDeleting(true);
               }}
             >
-              <IconTrash size={18} />
+              <FontAwesomeIcon icon={faTrash} />
             </SidebarActionButton>
           </div>
         )}
@@ -187,6 +178,4 @@ const Folder = ({
       {isOpen ? folderComponent : null}
     </>
   );
-};
-
-export default Folder;
+}

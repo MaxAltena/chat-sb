@@ -1,4 +1,4 @@
-import { IconFolderPlus, IconMistOff, IconPlus } from '@tabler/icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -7,7 +7,13 @@ import {
   OpenSidebarButton,
 } from './components/OpenCloseButton';
 
-import Search from '../Search';
+import { Search } from '../Search/Search';
+
+import {
+  faBroom,
+  faFolderPlus,
+  faPlus,
+} from '@fortawesome/free-solid-svg-icons';
 
 interface Props<T> {
   isOpen: boolean;
@@ -67,7 +73,7 @@ const Sidebar = <T,>({
               handleSearchTerm('');
             }}
           >
-            <IconPlus size={16} />
+            <FontAwesomeIcon icon={faPlus} />
             {addItemButtonTitle}
           </button>
 
@@ -75,7 +81,7 @@ const Sidebar = <T,>({
             className="ml-2 flex flex-shrink-0 cursor-pointer items-center gap-3 rounded-md border border-white/20 p-3 text-sm text-white transition-colors duration-200 hover:bg-gray-500/10"
             onClick={handleCreateFolder}
           >
-            <IconFolderPlus size={16} />
+            <FontAwesomeIcon icon={faFolderPlus} />
           </button>
         </div>
         {items?.length > 0 && (
@@ -105,7 +111,7 @@ const Sidebar = <T,>({
             </div>
           ) : (
             <div className="mt-8 select-none text-center text-white opacity-50">
-              <IconMistOff className="mx-auto mb-3" />
+              <FontAwesomeIcon icon={faBroom} className="mx-auto mb-3" />
               <span className="text-[14px] leading-normal">
                 {t('No prompts.')}
               </span>

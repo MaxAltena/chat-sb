@@ -1,4 +1,4 @@
-import { IconArrowDown, IconClearAll, IconSettings } from '@tabler/icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   MutableRefObject,
   memo,
@@ -33,6 +33,12 @@ import { ErrorMessageDiv } from './ErrorMessageDiv';
 import { ModelSelect } from './ModelSelect';
 import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
+
+import {
+  faArrowDown,
+  faBarsStaggered,
+  faGear,
+} from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   stopConversationRef: MutableRefObject<boolean>;
@@ -98,7 +104,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
           messages: updatedConversation.messages,
           key: apiKey,
           prompt: updatedConversation.prompt,
-          temperature: updatedConversation.temperature
+          temperature: updatedConversation.temperature,
         };
         const endpoint = getEndpoint(plugin);
         let body;
@@ -248,6 +254,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
     [
       apiKey,
       conversations,
+      homeDispatch,
       pluginKeys,
       selectedConversation,
       stopConversationRef,
@@ -425,14 +432,14 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                       />
 
                       <TemperatureSlider
-                          label="Temperature"
-                          onChangeTemperature={(temperature) =>
-                            handleUpdateConversation(selectedConversation, {
-                              key: 'temperature',
-                              value: temperature,
-                            })
-                          }
-                        />
+                        label="Temperature"
+                        onChangeTemperature={(temperature) =>
+                          handleUpdateConversation(selectedConversation, {
+                            key: 'temperature',
+                            value: temperature,
+                          })
+                        }
+                      />
                     </div>
                   )}
                 </div>
@@ -445,13 +452,13 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                     className="ml-2 cursor-pointer hover:opacity-50"
                     onClick={handleSettings}
                   >
-                    <IconSettings size={18} />
+                    <FontAwesomeIcon icon={faGear} />
                   </button>
                   <button
                     className="ml-2 cursor-pointer hover:opacity-50"
                     onClick={onClearAll}
                   >
-                    <IconClearAll size={18} />
+                    <FontAwesomeIcon icon={faBarsStaggered} />
                   </button>
                 </div>
                 {showSettings && (
@@ -501,7 +508,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
             className="flex h-7 w-7 items-center justify-center rounded-full bg-neutral-300 text-gray-800 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-neutral-200"
             onClick={handleScrollDown}
           >
-            <IconArrowDown size={18} />
+            <FontAwesomeIcon icon={faArrowDown} />
           </button>
         </div>
       )}

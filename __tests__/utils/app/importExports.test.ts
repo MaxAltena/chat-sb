@@ -11,8 +11,6 @@ import {
 import { ExportFormatV1, ExportFormatV2, ExportFormatV4 } from '@/types/export';
 import { OpenAIModelID, OpenAIModels } from '@/types/openai';
 
-import { describe, expect, it } from 'vitest';
-
 describe('Export Format Functions', () => {
   describe('isExportFormatV1', () => {
     it('should return true for v1 format', () => {

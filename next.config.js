@@ -13,6 +13,14 @@ const nextConfig = {
 
     return config;
   },
+
+  modularizeImports: {
+    /* Makes fontawesome icons tree-shakable */
+    '@fortawesome/?(((\\w*)?/?)*)-icons': {
+      transform: '@fortawesome/{{ matches.[1] }}-icons/{{member}}',
+      preventFullImport: true,
+    },
+  },
 };
 
 module.exports = nextConfig;
