@@ -1,6 +1,6 @@
 # Chat SB
 
-Chat SB is an advanced chatbot kit for OpenAI's chat models built on top of [Chatbot UI Lite](https://github.com/mckaywrigley/chatbot-ui-lite) and based on [Chatbot UI](https://github.com/mckaywrigley/chatbot-ui) using Next.js, TypeScript, and Tailwind CSS.
+Chat SB is an advanced chatbot kit for OpenAI's chat models built on top of [Chat SB Lite](https://github.com/mckaywrigley/chatbot-ui-lite) and based on [Chatbot UI](https://github.com/mckaywrigley/chatbot-ui) using Next.js, TypeScript, and Tailwind CSS.
 
 ## Modifications
 

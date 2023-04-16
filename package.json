@@ -62,6 +62,7 @@
     "gpt-3-encoder": "^1.1.4",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
+    "jsdom": "^21.1.1",
     "postcss": "^8.4.22",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.7",
@@ -71,10 +72,13 @@
     "typescript": "^5.0.4"
   },
   "engines": {
-    "node": "^18 || ^19",
+    "node": "^18",
+    "npm": "^9",
+    "yarn": "^4",
     "pnpm": "^8"
   },
   "volta": {
-    "node": "19.9.0"
+    "node": "18.16.0",
+    "yarn": "4.0.0-rc.42"
   }
 }
