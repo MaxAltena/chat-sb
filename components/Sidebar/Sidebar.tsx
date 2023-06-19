@@ -84,13 +84,11 @@ const Sidebar = <T,>({
             <FontAwesomeIcon icon={faFolderPlus} />
           </button>
         </div>
-        {items?.length > 0 && (
-          <Search
-            placeholder={t('Search prompts...') || ''}
-            searchTerm={searchTerm}
-            onSearch={handleSearchTerm}
-          />
-        )}
+        <Search
+          placeholder={t('Search...') || ''}
+          searchTerm={searchTerm}
+          onSearch={handleSearchTerm}
+        />
 
         <div className="flex-grow overflow-auto">
           {items?.length > 0 && (
@@ -113,7 +111,7 @@ const Sidebar = <T,>({
             <div className="mt-8 select-none text-center text-white opacity-50">
               <FontAwesomeIcon icon={faBroom} className="mx-auto mb-3" />
               <span className="text-[14px] leading-normal">
-                {t('No prompts.')}
+                {t('No data.')}
               </span>
             </div>
           )}

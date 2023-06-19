@@ -1,14 +1,17 @@
 # Chat SB
 
-Chat SB is an advanced chatbot kit for OpenAI's chat models built on top of [Chat SB Lite](https://github.com/mckaywrigley/chatbot-ui-lite) and based on [Chatbot UI](https://github.com/mckaywrigley/chatbot-ui) using Next.js, TypeScript, and Tailwind CSS.
+Chat SB is an advanced chatbot kit for OpenAI's chat models built on [Chatbot UI](https://github.com/mckaywrigley/chatbot-ui) using Next.js, TypeScript, and Tailwind CSS.
 
-## Modifications
+## Updates
 
-Modify the chat interface in `components/Chat`.
+Chatbot UI will be updated over time.
 
-Modify the sidebar interface in `components/Sidebar`.
+Expect frequent improvements.
 
-Modify the system prompt in `utils/server/index.ts`.
+**Next up:**
+
+- [ ] Sharing
+- [ ] "Bots"
 
 ## Running Locally
 
@@ -60,10 +63,12 @@ When deploying the application, the following environment variables can be set:
 | OPENAI_ORGANIZATION               |                                | Your OpenAI organization ID                                                                                                               |
 | DEFAULT_MODEL                     | `gpt-3.5-turbo`                | The default model to use on new conversations, for Azure use `gpt-35-turbo`                                                               |
 | NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT | [see here](utils/app/const.ts) | The default system prompt to use on new conversations                                                                                     |
+| NEXT_PUBLIC_DEFAULT_TEMPERATURE   | 1                              | The default temperature to use on new conversations                                                                                       |
 | GOOGLE_API_KEY                    |                                | See [Custom Search JSON API documentation][GCSE]                                                                                          |
 | GOOGLE_CSE_ID                     |                                | See [Custom Search JSON API documentation][GCSE]                                                                                          |
 
 If you do not provide an OpenAI API key with `OPENAI_API_KEY`, users will have to provide their own key.
+
 If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/account/api-keys).
 
 [GCSE]: https://developers.google.com/custom-search/v1/overview

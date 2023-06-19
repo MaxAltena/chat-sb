@@ -1,9 +1,11 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useContext } from 'react';
+import { IconFileExport, IconSettings } from '@tabler/icons-react';
+import { useContext, useState } from 'react';
 
 import { useTranslation } from 'next-i18next';
 
 import HomeContext from '@/pages/api/home/home.context';
+
+import { SettingDialog } from '@/components/Settings/SettingDialog';
 
 import { Import } from '../../Settings/Import';
 import { Key } from '../../Settings/Key';
@@ -16,6 +18,7 @@ import { faFileExport, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 export const ChatbarSettings = () => {
   const { t } = useTranslation('sidebar');
+  const [isSettingDialogOpen, setIsSettingDialog] = useState<boolean>(false);
 
   const {
     state: {
@@ -32,7 +35,6 @@ export const ChatbarSettings = () => {
     handleClearConversations,
     handleImportConversations,
     handleExportData,
-
     handleApiKeyChange,
   } = useContext(ChatbarContext);
 
@@ -66,6 +68,13 @@ export const ChatbarSettings = () => {
       ) : null}
 
       {!serverSidePluginKeysSet ? <PluginKeys /> : null}
+
+      <SettingDialog
+        open={isSettingDialogOpen}
+        onClose={() => {
+          setIsSettingDialog(false);
+        }}
+      />
     </div>
   );
 };
