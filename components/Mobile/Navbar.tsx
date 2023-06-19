@@ -1,17 +1,16 @@
-import { IconPlus } from '@tabler/icons-react';
-import { FC } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { Conversation } from '@/types/chat';
 
-interface Props {
-  selectedConversation: Conversation;
-  onNewConversation: () => void;
-}
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-export const Navbar: FC<Props> = ({
+export function Navbar({
   selectedConversation,
   onNewConversation,
-}) => {
+}: {
+  selectedConversation: Conversation;
+  onNewConversation: () => void;
+}) {
   return (
     <nav className="flex w-full justify-between bg-[#202123] py-3 px-4">
       <div className="mr-4"></div>
@@ -20,10 +19,11 @@ export const Navbar: FC<Props> = ({
         {selectedConversation.name}
       </div>
 
-      <IconPlus
+      <FontAwesomeIcon
+        icon={faPlus}
         className="cursor-pointer hover:text-neutral-400 mr-8"
         onClick={onNewConversation}
       />
     </nav>
   );
-};
+}

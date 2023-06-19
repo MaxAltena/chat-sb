@@ -1,4 +1,4 @@
-import { IconExternalLink } from '@tabler/icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useContext } from 'react';
 
 import { useTranslation } from 'next-i18next';
@@ -6,6 +6,8 @@ import { useTranslation } from 'next-i18next';
 import { OpenAIModel } from '@/types/openai';
 
 import HomeContext from '@/pages/api/home/home.context';
+
+import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 
 export const ModelSelect = () => {
   const { t } = useTranslation('chat');
@@ -57,7 +59,7 @@ export const ModelSelect = () => {
           target="_blank"
           className="flex items-center"
         >
-          <IconExternalLink size={18} className={'inline mr-1'} />
+          <FontAwesomeIcon icon={faExternalLink} className="inline mr-1" />
           {t('View Account Usage')}
         </a>
       </div>

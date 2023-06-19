@@ -1,10 +1,6 @@
-# Chatbot UI
+# Chat SB
 
-Chatbot UI is an open source chat UI for AI models.
-
-See a [demo](https://twitter.com/mckaywrigley/status/1640380021423603713?s=46&t=AowqkodyK6B4JccSOxSPew).
-
-![Chatbot UI](./public/screenshots/screenshot-0402023.jpg)
+Chat SB is an advanced chatbot kit for OpenAI's chat models built on [Chatbot UI](https://github.com/mckaywrigley/chatbot-ui) using Next.js, TypeScript, and Tailwind CSS.
 
 ## Updates
 
@@ -17,41 +13,18 @@ Expect frequent improvements.
 - [ ] Sharing
 - [ ] "Bots"
 
-## Deploy
-
-**Vercel**
-
-Host your own live version of Chatbot UI with Vercel.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmckaywrigley%2Fchatbot-ui)
-
-**Docker**
-
-Build locally:
-
-```shell
-docker build -t chatgpt-ui .
-docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 chatgpt-ui
-```
-
-Pull from ghcr:
-
-```
-docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 ghcr.io/mckaywrigley/chatbot-ui:main
-```
-
 ## Running Locally
 
 **1. Clone Repo**
 
 ```bash
-git clone https://github.com/mckaywrigley/chatbot-ui.git
+git clone https://github.com/maxaltena/chat-sb.git
 ```
 
 **2. Install Dependencies**
 
 ```bash
-npm i
+pnpm i
 ```
 
 **3. Provide OpenAI API Key**
@@ -69,7 +42,7 @@ OPENAI_API_KEY=YOUR_KEY
 **4. Run App**
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 **5. Use It**
@@ -97,9 +70,5 @@ When deploying the application, the following environment variables can be set:
 If you do not provide an OpenAI API key with `OPENAI_API_KEY`, users will have to provide their own key.
 
 If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/account/api-keys).
-
-## Contact
-
-If you have any questions, feel free to reach out to Mckay on [Twitter](https://twitter.com/mckaywrigley).
 
 [GCSE]: https://developers.google.com/custom-search/v1/overview

@@ -1,11 +1,13 @@
-import { IconArrowBarLeft, IconArrowBarRight } from '@tabler/icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-interface Props {
-  onClick: any;
+import { faAnglesLeft, faAnglesRight } from '@fortawesome/free-solid-svg-icons';
+
+type SidebarButtonProps = {
+  onClick: VoidFunction;
   side: 'left' | 'right';
-}
+};
 
-export const CloseSidebarButton = ({ onClick, side }: Props) => {
+export function CloseSidebarButton({ onClick, side }: SidebarButtonProps) {
   return (
     <>
       <button
@@ -16,7 +18,11 @@ export const CloseSidebarButton = ({ onClick, side }: Props) => {
         } sm:h-8 sm:w-8 sm:text-neutral-700`}
         onClick={onClick}
       >
-        {side === 'right' ? <IconArrowBarRight /> : <IconArrowBarLeft />}
+        {side === 'right' ? (
+          <FontAwesomeIcon icon={faAnglesRight} />
+        ) : (
+          <FontAwesomeIcon icon={faAnglesLeft} />
+        )}
       </button>
       <div
         onClick={onClick}
@@ -24,9 +30,9 @@ export const CloseSidebarButton = ({ onClick, side }: Props) => {
       ></div>
     </>
   );
-};
+}
 
-export const OpenSidebarButton = ({ onClick, side }: Props) => {
+export const OpenSidebarButton = ({ onClick, side }: SidebarButtonProps) => {
   return (
     <button
       className={`fixed top-2.5 ${
@@ -36,7 +42,11 @@ export const OpenSidebarButton = ({ onClick, side }: Props) => {
       } sm:h-8 sm:w-8 sm:text-neutral-700`}
       onClick={onClick}
     >
-      {side === 'right' ? <IconArrowBarLeft /> : <IconArrowBarRight />}
+      {side === 'right' ? (
+        <FontAwesomeIcon icon={faAnglesLeft} />
+      ) : (
+        <FontAwesomeIcon icon={faAnglesRight} />
+      )}
     </button>
   );
 };

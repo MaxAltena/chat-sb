@@ -14,6 +14,8 @@ import ChatbarContext from '../Chatbar.context';
 import { ClearConversations } from './ClearConversations';
 import { PluginKeys } from './PluginKeys';
 
+import { faFileExport, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+
 export const ChatbarSettings = () => {
   const { t } = useTranslation('sidebar');
   const [isSettingDialogOpen, setIsSettingDialog] = useState<boolean>(false);
@@ -46,14 +48,19 @@ export const ChatbarSettings = () => {
 
       <SidebarButton
         text={t('Export data')}
-        icon={<IconFileExport size={18} />}
+        icon={<FontAwesomeIcon icon={faFileExport} />}
         onClick={() => handleExportData()}
       />
 
       <SidebarButton
-        text={t('Settings')}
-        icon={<IconSettings size={18} />}
-        onClick={() => setIsSettingDialog(true)}
+        text={lightMode === 'light' ? t('Dark mode') : t('Light mode')}
+        icon={<FontAwesomeIcon icon={lightMode === 'light' ? faMoon : faSun} />}
+        onClick={() =>
+          homeDispatch({
+            field: 'lightMode',
+            value: lightMode === 'light' ? 'dark' : 'light',
+          })
+        }
       />
 
       {!serverSideApiKeyIsSet ? (

@@ -28,6 +28,15 @@ import { PluginSelect } from './PluginSelect';
 import { PromptList } from './PromptList';
 import { VariableModal } from './VariableModal';
 
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import {
+  faBolt,
+  faPaperPlane,
+  faRepeat,
+  faSpinner,
+  faStop,
+} from '@fortawesome/free-solid-svg-icons';
+
 interface Props {
   onSend: (message: Message, plugin: Plugin | null) => void;
   onRegenerate: () => void;
@@ -237,7 +246,7 @@ export const ChatInput = ({
         textareaRef?.current?.scrollHeight > 400 ? 'auto' : 'hidden'
       }`;
     }
-  }, [content]);
+  }, [content, textareaRef]);
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
@@ -264,7 +273,7 @@ export const ChatInput = ({
             className="absolute top-0 left-0 right-0 mx-auto mb-3 flex w-fit items-center gap-3 rounded border border-neutral-200 bg-white py-2 px-4 text-black hover:opacity-50 dark:border-neutral-600 dark:bg-[#343541] dark:text-white md:mb-0 md:mt-2"
             onClick={handleStopConversation}
           >
-            <IconPlayerStop size={16} /> {t('Stop Generating')}
+            <FontAwesomeIcon icon={faStop} /> {t('Stop Generating')}
           </button>
         )}
 
@@ -275,7 +284,7 @@ export const ChatInput = ({
               className="absolute top-0 left-0 right-0 mx-auto mb-3 flex w-fit items-center gap-3 rounded border border-neutral-200 bg-white py-2 px-4 text-black hover:opacity-50 dark:border-neutral-600 dark:bg-[#343541] dark:text-white md:mb-0 md:mt-2"
               onClick={onRegenerate}
             >
-              <IconRepeat size={16} /> {t('Regenerate response')}
+              <FontAwesomeIcon icon={faRepeat} /> {t('Regenerate response')}
             </button>
           )}
 
@@ -285,7 +294,11 @@ export const ChatInput = ({
             onClick={() => setShowPluginSelect(!showPluginSelect)}
             onKeyDown={(e) => {}}
           >
-            {plugin ? <IconBrandGoogle size={20} /> : <IconBolt size={20} />}
+            {plugin ? (
+              <FontAwesomeIcon icon={faGoogle} />
+            ) : (
+              <FontAwesomeIcon icon={faBolt} />
+            )}
           </button>
 
           {showPluginSelect && (
@@ -340,9 +353,9 @@ export const ChatInput = ({
             onClick={handleSend}
           >
             {messageIsStreaming ? (
-              <div className="h-4 w-4 animate-spin rounded-full border-t-2 border-neutral-800 opacity-60 dark:border-neutral-100"></div>
+              <FontAwesomeIcon icon={faSpinner} className="animate-spin" />
             ) : (
-              <IconSend size={18} />
+              <FontAwesomeIcon icon={faPaperPlane} />
             )}
           </button>
 
@@ -378,20 +391,6 @@ export const ChatInput = ({
             />
           )}
         </div>
-      </div>
-      <div className="px-3 pt-2 pb-3 text-center text-[12px] text-black/50 dark:text-white/50 md:px-4 md:pt-3 md:pb-6">
-        <a
-          href="https://github.com/mckaywrigley/chatbot-ui"
-          target="_blank"
-          rel="noreferrer"
-          className="underline"
-        >
-          ChatBot UI
-        </a>
-        .{' '}
-        {t(
-          "Chatbot UI is an advanced chatbot kit for OpenAI's chat models aiming to mimic ChatGPT's interface and functionality.",
-        )}
       </div>
     </div>
   );

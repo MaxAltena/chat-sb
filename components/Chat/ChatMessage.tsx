@@ -1,11 +1,4 @@
-import {
-  IconCheck,
-  IconCopy,
-  IconEdit,
-  IconRobot,
-  IconTrash,
-  IconUser,
-} from '@tabler/icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FC, memo, useContext, useEffect, useRef, useState } from 'react';
 
 import { useTranslation } from 'next-i18next';
@@ -19,6 +12,14 @@ import HomeContext from '@/pages/api/home/home.context';
 import { CodeBlock } from '../Markdown/CodeBlock';
 import { MemoizedReactMarkdown } from '../Markdown/MemoizedReactMarkdown';
 
+import {
+  faCheck,
+  faCopy,
+  faEdit,
+  faRobot,
+  faTrash,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 import rehypeMathjax from 'rehype-mathjax';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -136,9 +137,9 @@ export const ChatMessage: FC<Props> = memo(({ message, messageIndex, onEdit }) =
       <div className="relative m-auto flex p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-2xl lg:px-0 xl:max-w-3xl">
         <div className="min-w-[40px] text-right font-bold">
           {message.role === 'assistant' ? (
-            <IconRobot size={30} />
+            <FontAwesomeIcon icon={faRobot} />
           ) : (
-            <IconUser size={30} />
+            <FontAwesomeIcon icon={faUser} />
           )}
         </div>
 
@@ -196,19 +197,40 @@ export const ChatMessage: FC<Props> = memo(({ message, messageIndex, onEdit }) =
                     className="invisible group-hover:visible focus:visible text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
                     onClick={toggleEditing}
                   >
-                    <IconEdit size={20} />
+                    <FontAwesomeIcon icon={faEdit} />
                   </button>
                   <button
                     className="invisible group-hover:visible focus:visible text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
                     onClick={handleDeleteMessage}
                   >
-                    <IconTrash size={20} />
+                    <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </div>
               )}
             </div>
           ) : (
-            <div className="flex flex-row">
+            <>
+              <div
+                className={`absolute ${
+                  window.innerWidth < 640
+                    ? 'bottom-1 right-3'
+                    : 'right-0 top-[26px] m-0'
+                }`}
+              >
+                {messagedCopied ? (
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-green-500 dark:text-green-400"
+                  />
+                ) : (
+                  <button
+                    className="translate-x-[1000px] text-gray-500 hover:text-gray-700 focus:translate-x-0 group-hover:translate-x-0 dark:text-gray-400 dark:hover:text-gray-300"
+                    onClick={copyOnClick}
+                  >
+                    <FontAwesomeIcon icon={faCopy} />
+                  </button>
+                )}
+              </div>
               <MemoizedReactMarkdown
                 className="prose dark:prose-invert flex-1"
                 remarkPlugins={[remarkGfm, remarkMath]}

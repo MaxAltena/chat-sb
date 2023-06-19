@@ -1,5 +1,4 @@
-import { IconFileImport } from '@tabler/icons-react';
-import { FC } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useTranslation } from 'next-i18next';
 
@@ -7,11 +6,13 @@ import { SupportedExportFormats } from '@/types/export';
 
 import { SidebarButton } from '../Sidebar/SidebarButton';
 
-interface Props {
-  onImport: (data: SupportedExportFormats) => void;
-}
+import { faFileImport } from '@fortawesome/free-solid-svg-icons';
 
-export const Import: FC<Props> = ({ onImport }) => {
+export function Import({
+  onImport,
+}: {
+  onImport: (data: SupportedExportFormats) => void;
+}) {
   const { t } = useTranslation('sidebar');
   return (
     <>
@@ -36,7 +37,7 @@ export const Import: FC<Props> = ({ onImport }) => {
 
       <SidebarButton
         text={t('Import data')}
-        icon={<IconFileImport size={18} />}
+        icon={<FontAwesomeIcon icon={faFileImport} />}
         onClick={() => {
           const importFile = document.querySelector(
             '#import-file',
@@ -48,4 +49,4 @@ export const Import: FC<Props> = ({ onImport }) => {
       />
     </>
   );
-};
+}

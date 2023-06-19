@@ -1,4 +1,4 @@
-import { IconKey } from '@tabler/icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { KeyboardEvent, useContext, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -9,6 +9,8 @@ import HomeContext from '@/pages/api/home/home.context';
 import { SidebarButton } from '@/components/Sidebar/SidebarButton';
 
 import ChatbarContext from '../Chatbar.context';
+
+import { faKey } from '@fortawesome/free-solid-svg-icons';
 
 export const PluginKeys = () => {
   const { t } = useTranslation('sidebar');
@@ -54,7 +56,7 @@ export const PluginKeys = () => {
     <>
       <SidebarButton
         text={t('Plugin Keys')}
-        icon={<IconKey size={18} />}
+        icon={<FontAwesomeIcon icon={faKey} />}
         onClick={() => setIsChanging(true)}
       />
 

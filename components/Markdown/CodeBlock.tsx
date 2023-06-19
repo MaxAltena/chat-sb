@@ -1,4 +1,4 @@
-import { IconCheck, IconClipboard, IconDownload } from '@tabler/icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FC, memo, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
@@ -9,6 +9,12 @@ import {
   generateRandomString,
   programmingLanguages,
 } from '@/utils/app/codeblock';
+
+import {
+  faCheck,
+  faClipboard,
+  faDownload,
+} from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
   language: string;
@@ -69,14 +75,14 @@ export const CodeBlock: FC<Props> = memo(({ language, value }) => {
             className="flex gap-1.5 items-center rounded bg-none p-1 text-xs text-white"
             onClick={copyToClipboard}
           >
-            {isCopied ? <IconCheck size={18} /> : <IconClipboard size={18} />}
+            <FontAwesomeIcon icon={isCopied ? faCheck : faClipboard} />
             {isCopied ? t('Copied!') : t('Copy code')}
           </button>
           <button
             className="flex items-center rounded bg-none p-1 text-xs text-white"
             onClick={downloadAsFile}
           >
-            <IconDownload size={18} />
+            <FontAwesomeIcon icon={faDownload} />
           </button>
         </div>
       </div>

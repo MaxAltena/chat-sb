@@ -1,9 +1,4 @@
-import {
-  IconBulbFilled,
-  IconCheck,
-  IconTrash,
-  IconX,
-} from '@tabler/icons-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   DragEvent,
   MouseEventHandler,
@@ -19,11 +14,14 @@ import SidebarActionButton from '@/components/Buttons/SidebarActionButton';
 import PromptbarContext from '../PromptBar.context';
 import { PromptModal } from './PromptModal';
 
-interface Props {
-  prompt: Prompt;
-}
+import {
+  faCheck,
+  faLightbulb,
+  faTrash,
+  faX,
+} from '@fortawesome/free-solid-svg-icons';
 
-export const PromptComponent = ({ prompt }: Props) => {
+export function PromptComponent({ prompt }: { prompt: Prompt }) {
   const {
     dispatch: promptDispatch,
     handleUpdatePrompt,
@@ -91,7 +89,7 @@ export const PromptComponent = ({ prompt }: Props) => {
           setRenameValue('');
         }}
       >
-        <IconBulbFilled size={18} />
+        <FontAwesomeIcon icon={faLightbulb} />
 
         <div className="relative max-h-5 flex-1 overflow-hidden text-ellipsis whitespace-nowrap break-all pr-4 text-left text-[12.5px] leading-3">
           {prompt.name}
@@ -101,11 +99,11 @@ export const PromptComponent = ({ prompt }: Props) => {
       {(isDeleting || isRenaming) && (
         <div className="absolute right-1 z-10 flex text-gray-300">
           <SidebarActionButton handleClick={handleDelete}>
-            <IconCheck size={18} />
+            <FontAwesomeIcon icon={faCheck} />
           </SidebarActionButton>
 
           <SidebarActionButton handleClick={handleCancelDelete}>
-            <IconX size={18} />
+            <FontAwesomeIcon icon={faX} />
           </SidebarActionButton>
         </div>
       )}
@@ -113,7 +111,7 @@ export const PromptComponent = ({ prompt }: Props) => {
       {!isDeleting && !isRenaming && (
         <div className="absolute right-1 z-10 flex text-gray-300">
           <SidebarActionButton handleClick={handleOpenDeleteModal}>
-            <IconTrash size={18} />
+            <FontAwesomeIcon icon={faTrash} />
           </SidebarActionButton>
         </div>
       )}
@@ -127,4 +125,4 @@ export const PromptComponent = ({ prompt }: Props) => {
       )}
     </div>
   );
-};
+}

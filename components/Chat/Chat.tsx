@@ -34,6 +34,12 @@ import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
 import { MemoizedChatMessage } from './MemoizedChatMessage';
 
+import {
+  faArrowDown,
+  faBarsStaggered,
+  faGear,
+} from '@fortawesome/free-solid-svg-icons';
+
 interface Props {
   stopConversationRef: MutableRefObject<boolean>;
 }
@@ -248,6 +254,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
     [
       apiKey,
       conversations,
+      homeDispatch,
       pluginKeys,
       selectedConversation,
       stopConversationRef,
@@ -352,17 +359,11 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
       {!(apiKey || serverSideApiKeyIsSet) ? (
         <div className="mx-auto flex h-full w-[300px] flex-col justify-center space-y-6 sm:w-[600px]">
           <div className="text-center text-4xl font-bold text-black dark:text-white">
-            Welcome to Chatbot UI
-          </div>
-          <div className="text-center text-lg text-black dark:text-white">
-            <div className="mb-8">{`Chatbot UI is an open source clone of OpenAI's ChatGPT UI.`}</div>
-            <div className="mb-2 font-bold">
-              Important: Chatbot UI is 100% unaffiliated with OpenAI.
-            </div>
+            Welcome to Chat SB
           </div>
           <div className="text-center text-gray-500 dark:text-gray-400">
             <div className="mb-2">
-              Chatbot UI allows you to plug in your API key to use this UI with
+              Chat SB allows you to plug in your API key to use this UI with
               their API.
             </div>
             <div className="mb-2">
@@ -405,7 +406,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                         <Spinner size="16px" className="mx-auto" />
                       </div>
                     ) : (
-                      'Chatbot UI'
+                      'Chat SB'
                     )}
                   </div>
 
@@ -446,13 +447,13 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                     className="ml-2 cursor-pointer hover:opacity-50"
                     onClick={handleSettings}
                   >
-                    <IconSettings size={18} />
+                    <FontAwesomeIcon icon={faGear} />
                   </button>
                   <button
                     className="ml-2 cursor-pointer hover:opacity-50"
                     onClick={onClearAll}
                   >
-                    <IconClearAll size={18} />
+                    <FontAwesomeIcon icon={faBarsStaggered} />
                   </button>
                 </div>
                 {showSettings && (
@@ -505,6 +506,16 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
             showScrollDownButton={showScrollDownButton}
           />
         </>
+      )}
+      {showScrollDownButton && (
+        <div className="absolute bottom-0 right-0 mb-4 mr-4 pb-20">
+          <button
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-neutral-300 text-gray-800 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-neutral-200"
+            onClick={handleScrollDown}
+          >
+            <FontAwesomeIcon icon={faArrowDown} />
+          </button>
+        </div>
       )}
     </div>
   );

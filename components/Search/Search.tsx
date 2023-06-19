@@ -1,14 +1,18 @@
-import { IconX } from '@tabler/icons-react';
-import { FC } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useTranslation } from 'next-i18next';
 
-interface Props {
+import { faX } from '@fortawesome/free-solid-svg-icons';
+
+export function Search({
+  placeholder,
+  searchTerm,
+  onSearch,
+}: {
   placeholder: string;
   searchTerm: string;
   onSearch: (searchTerm: string) => void;
-}
-const Search: FC<Props> = ({ placeholder, searchTerm, onSearch }) => {
+}) {
   const { t } = useTranslation('sidebar');
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,14 +34,12 @@ const Search: FC<Props> = ({ placeholder, searchTerm, onSearch }) => {
       />
 
       {searchTerm && (
-        <IconX
+        <FontAwesomeIcon
+          icon={faX}
           className="absolute right-4 cursor-pointer text-neutral-300 hover:text-neutral-400"
-          size={18}
           onClick={clearSearch}
         />
       )}
     </div>
   );
-};
-
-export default Search;
+}
