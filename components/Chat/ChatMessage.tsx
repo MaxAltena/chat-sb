@@ -23,6 +23,7 @@ import {
 import rehypeMathjax from 'rehype-mathjax';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
+import { IconCheck, IconCopy } from '@tabler/icons-react';
 
 export interface Props {
   message: Message;
@@ -303,7 +304,7 @@ export const ChatMessage: FC<Props> = memo(({ message, messageIndex, onEdit }) =
                   </button>
                 )}
               </div>
-            </div>
+            </>
           )}
         </div>
       </div>
