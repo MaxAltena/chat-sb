@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   IconArrowDown,
   IconBolt,
@@ -36,7 +37,6 @@ import {
   faSpinner,
   faStop,
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Props {
   onSend: (message: Message, plugin: Plugin | null) => void;
@@ -183,7 +183,7 @@ export const ChatInput = ({
 
   const parseVariables = (content: string) => {
     const regex = /{{(.*?)}}/g;
-    const foundVariables = [];
+    const foundVariables: any[] = [];
     let match;
 
     while ((match = regex.exec(content)) !== null) {

@@ -1,8 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconRobot } from '@tabler/icons-react';
 import { FC } from 'react';
 
 import { faEllipsis, faRobot } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export function ChatLoader() {
   return (
