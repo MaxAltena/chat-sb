@@ -53,6 +53,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const json = await response.json();
+    console.log('🚀 ~ handler ~ json:', json);
 
     const models: OpenAIModel[] = json.data
       .map((model: any) => {
@@ -62,6 +63,11 @@ const handler = async (req: Request): Promise<Response> => {
             return {
               id: model.id,
               name: OpenAIModels[value].name,
+            };
+          } else {
+            return {
+              id: model.id,
+              name: model.id,
             };
           }
         }
